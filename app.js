@@ -19,7 +19,7 @@ app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
-app.post('/test', (req, res) => {
-    res.json({ ok: true });
-});
+// app.post('/test', (req, res) => {
+//     res.json({ ok: true });
+// });
 
