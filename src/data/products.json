@@ -1,0 +1,24 @@
+[
+  {
+    "id": "3922e2a7-3bab-4f3f-96d8-cd09eeccdd1b",
+    "status": true,
+    "thumbnails": [],
+    "title": "Producto correcto",
+    "description": "Ahora sí funciona",
+    "code": "OK001",
+    "price": 1200,
+    "stock": 10,
+    "category": "test"
+  },
+  {
+    "id": "c79b20af-a50c-49af-b981-caec990e47d0",
+    "status": true,
+    "thumbnails": [],
+    "title": "Producto correcto",
+    "description": "Ahora sí funciona",
+    "code": "OK002",
+    "price": 1200,
+    "stock": 10,
+    "category": "test"
+  }
+]
