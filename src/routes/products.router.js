@@ -60,7 +60,6 @@ router.put('/:pid', async (req, res) => {
 
         if (!updatedProduct) return res.status(404).json({ error: 'Producto no encontrado' });
 
-        // Opcional: Emitir actualización en PUT también
         const products = await productManager.getProducts();
         req.io.emit('products', products);
 
