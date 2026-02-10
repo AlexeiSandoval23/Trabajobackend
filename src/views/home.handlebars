@@ -1,0 +1,15 @@
+<h1>Lista de Productos</h1>
+
+<div class="product-container">
+    {{#each products}}
+        <div class="product-card">
+            <h3>{{this.title}}</h3>
+            <p>Descripción: {{this.description}}</p>
+            <p>Precio: ${{this.price}}</p>
+            <p>Categoría: {{this.category}}</p>
+            <p>Stock: {{this.stock}}</p>
+        </div>
+    {{else}}
+        <p>No hay productos disponibles.</p>
+    {{/each}}
+</div>
