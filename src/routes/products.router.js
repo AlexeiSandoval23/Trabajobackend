@@ -32,10 +32,6 @@ router.get('/:pid', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-<<<<<<< HEAD
-=======
-
->>>>>>> 23afec83a0fb0f4f0f0afc044bc25257f164293a
     const { title, description, code, price, stock, category, thumbnails } = req.body;
 
     if (!title || !description || !code || !price || stock === undefined || !category) {
@@ -47,14 +43,10 @@ router.post('/', async (req, res) => {
             title, description, code, price, stock, category, thumbnails
         });
 
-<<<<<<< HEAD
-        // OBTENER LA LISTA ACTUALIZADA
         const products = await productManager.getProducts();
         
         req.io.emit('products', products);
 
-=======
->>>>>>> 23afec83a0fb0f4f0f0afc044bc25257f164293a
         res.status(201).json(newProduct);
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -68,12 +60,10 @@ router.put('/:pid', async (req, res) => {
 
         if (!updatedProduct) return res.status(404).json({ error: 'Producto no encontrado' });
 
-<<<<<<< HEAD
+        // Opcional: Emitir actualización en PUT también
         const products = await productManager.getProducts();
         req.io.emit('products', products);
 
-=======
->>>>>>> 23afec83a0fb0f4f0f0afc044bc25257f164293a
         res.json(updatedProduct);
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar' });
@@ -87,12 +77,9 @@ router.delete('/:pid', async (req, res) => {
 
         if (!deletedProduct) return res.status(404).json({ error: 'Producto no encontrado' });
 
-<<<<<<< HEAD
         const products = await productManager.getProducts();
         req.io.emit('products', products);
 
-=======
->>>>>>> 23afec83a0fb0f4f0f0afc044bc25257f164293a
         res.json({ message: 'Producto eliminado', product: deletedProduct });
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar' });
