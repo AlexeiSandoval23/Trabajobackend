@@ -1,0 +1,30 @@
+<h1>WebSocket</h1>
+
+<div class="form-container">
+    <h2>Agregar Producto</h2>
+    <form id="productForm">
+        <input type="text" id="title" placeholder="Título" required>
+        <input type="text" id="description" placeholder="Descripción" required>
+        <input type="text" id="code" placeholder="Código" required>
+        <input type="number" id="price" placeholder="Precio" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <input type="text" id="category" placeholder="Categoría" required>
+        <button type="submit">Agregar Producto</button>
+    </form>
+</div>
+
+<hr>
+
+<div id="productList" class="product-container">
+    {{#each products}}
+        <div class="product-card">
+            <h3>{{this.title}}</h3>
+            <p>Precio: ${{this.price}}</p>
+            <p>Stock: {{this.stock}}</p>
+            <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+        </div>
+    {{/each}}
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

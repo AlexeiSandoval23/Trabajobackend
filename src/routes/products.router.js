@@ -32,7 +32,6 @@ router.get('/:pid', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-
     const { title, description, code, price, stock, category, thumbnails } = req.body;
 
     if (!title || !description || !code || !price || stock === undefined || !category) {
@@ -43,6 +42,11 @@ router.post('/', async (req, res) => {
         const newProduct = await productManager.addProduct({
             title, description, code, price, stock, category, thumbnails
         });
+
+        // OBTENER LA LISTA ACTUALIZADA
+        const products = await productManager.getProducts();
+        
+        req.io.emit('products', products);
 
         res.status(201).json(newProduct);
     } catch (error) {
@@ -57,6 +61,9 @@ router.put('/:pid', async (req, res) => {
 
         if (!updatedProduct) return res.status(404).json({ error: 'Producto no encontrado' });
 
+        const products = await productManager.getProducts();
+        req.io.emit('products', products);
+
         res.json(updatedProduct);
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar' });
@@ -69,6 +76,9 @@ router.delete('/:pid', async (req, res) => {
         const deletedProduct = await productManager.deleteProduct(pid);
 
         if (!deletedProduct) return res.status(404).json({ error: 'Producto no encontrado' });
+
+        const products = await productManager.getProducts();
+        req.io.emit('products', products);
 
         res.json({ message: 'Producto eliminado', product: deletedProduct });
     } catch (error) {

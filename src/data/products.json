@@ -20,5 +20,15 @@
     "price": 1200,
     "stock": 10,
     "category": "test"
+  },
+  {
+    "id": "2ae0f343-ed86-4280-bf47-d67773733c3a",
+    "status": true,
+    "title": "Producto Postman",
+    "description": "Prueba de socket",
+    "code": "POST123",
+    "price": 500,
+    "stock": 10,
+    "category": "pruebas"
   }
 ]
