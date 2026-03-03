@@ -1,7 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const { Server } = require('socket.io');
-const mongoose = require('mongoose'); // Importamos mongoose
+const mongoose = require('mongoose');
 
 const productsRouter = require('./src/routes/products.router');
 const cartsRouter = require('./src/routes/carts.router');
