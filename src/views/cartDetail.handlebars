@@ -1,0 +1,37 @@
+<h1>Detalle de tu Carrito</h1>
+<p>ID del Carrito: {{cart._id}}</p>
+
+<div class="cart-container">
+    {{#if cart.products.length}}
+        <ul>
+            {{#each cart.products}}
+                <li style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+                    <h3>{{this.product.title}}</h3>
+                    <p>Precio unitario: ${{this.product.price}}</p>
+                    <p>Cantidad seleccionada: <strong>{{this.quantity}}</strong></p>
+                </li>
+            {{/each}}
+        </ul>
+        <button onclick="emptyCart('{{cart._id}}')">Vaciar Carrito</button>
+    {{else}}
+        <p>Tu carrito está vacío.</p>
+    {{/if}}
+</div>
+<br>
+<a href="/products">Volver a comprar</a>
+
+<script>
+    async function emptyCart(cartId) {
+        try {
+            const response = await fetch(`/api/carts/${cartId}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                alert('Carrito vaciado exitosamente');
+                location.reload(); 
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+</script>
