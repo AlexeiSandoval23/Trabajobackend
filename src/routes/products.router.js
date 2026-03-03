@@ -20,7 +20,6 @@ router.get('/', async (req, res) => {
             }
         }
 
-        // Construir opciones de paginación
         const options = {
             page,
             limit,
@@ -33,7 +32,6 @@ router.get('/', async (req, res) => {
 
         const result = await Product.paginate(filter, options);
 
-        // Construir la URL base para los links de paginación
         const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}`;
         
         const buildLink = (pageNumber) => {
